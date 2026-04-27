@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/axios';
+import '../App.css';
+import { User, Mail, Lock } from 'lucide-react'; // Added User icon for the name field! 👤✉️🔒
 
 export default function Register() {
   const { login } = useAuth();
@@ -11,7 +13,8 @@ export default function Register() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Added the React.FormEvent<HTMLFormElement> type for strict TypeScript safety 🛡️
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -29,55 +32,62 @@ export default function Register() {
 
   return (
     <div className="auth-container">
-        {/* LEFT SIDE CONTENT */}
-  <div className="auth-left">
-    <h1>Make smarter career decisions</h1>
-    <p>Evaluate company stability before you join</p>
+      {/* We reuse the "login-form" class because the styling is perfectly identical! */}
+      <form onSubmit={handleSubmit} className="login-form">
+        
+        <div className="form-header">
+          <h3>Synapse</h3>
+          <h2>Join Synapse</h2>
+          <p>Create an account to continue</p>
+        </div>
+        
+        {error && <p className="error-text">{error}</p>}
 
-    {/* Floating Cards */}
-    <div className="score-card">
-      <span>📈 Stability Score</span>
-      <strong>8.2 / 10</strong>
-      <div className="tag">Safe</div>
-    </div>
+        {/* 👤 Name Input Wrapper */}
+        <div className="input-wrapper">
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={form.name}
+            onChange={e => setForm({ ...form, name: e.target.value })}
+            required
+          />
+          <User className="input-icon" size={18} />
+        </div>
 
-    <div className="risk-card">
-      <span>⚠️ Layoff Risk</span>
-      <strong>LOW</strong>
-    </div>
-  </div>
+        {/* ✉️ Email Input Wrapper */}
+        <div className="input-wrapper">
+          <input
+            type="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={e => setForm({ ...form, email: e.target.value })}
+            required
+          />
+          <Mail className="input-icon" size={18} />
+        </div>
 
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        {/* 🔒 Password Input Wrapper */}
+        <div className="input-wrapper">
+          <input
+            type="password"
+            placeholder="Password (min 8 chars)"
+            value={form.password}
+            onChange={e => setForm({ ...form, password: e.target.value })}
+            required
+            minLength={8}
+          />
+          <Lock className="input-icon" size={18} />
+        </div>
 
-      <input
-        placeholder="Full Name"
-        value={form.name}
-        onChange={e => setForm({ ...form, name: e.target.value })}
-        required
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={e => setForm({ ...form, email: e.target.value })}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password (min 8 chars)"
-        value={form.password}
-        onChange={e => setForm({ ...form, password: e.target.value })}
-        required
-      />
+        <button type="submit" disabled={loading}>
+          {loading ? 'Creating account...' : 'Register'}
+        </button>
 
-      <button type="submit" disabled={loading}>
-        {loading ? 'Creating account...' : 'Register'}
-      </button>
-
-      <p>Already have an account? <Link to="/login">Login</Link></p>
-    </form>
+        <p className="register-link">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </form>
     </div>
   );
 }
