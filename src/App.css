@@ -1,13 +1,15 @@
-body{
-  letter-spacing:normal;
+body {
+  letter-spacing: normal;
+  background-image: url('../public/bg-synapse.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* This makes it fill the screen smoothly */
 }
 .auth-container {
   min-height: 100vh;
-  background: url('/download.svg') no-repeat center;
-  background-size: cover;
   color: black;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
 }
 
@@ -79,69 +81,123 @@ body{
   left: 60px;
 }
 
-form {
+/* --- FORM CONTAINER --- */
+form.login-form {
   background: #ffffff;
-  padding: 32px;
+  padding: 40px;
   border-radius: 16px;
-  width: 360px;
+  width: 100%;
+  max-width: 400px; /* Gives it a nice standard width */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box; /* Ensures padding doesn't break widths */
 }
 
-form h2 {
+/* --- TEXT STYLING --- */
+.form-header {
+  text-align: center;
+  margin-bottom: 10px;
+
+}
+
+.form-header h3 {
+  color: #8eb068;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+}
+
+.form-header h2 {
   color: black;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
+  margin: 0 0 8px 0;
 }
 
-form input {
-  width: 100%;
-  padding: 12px 0px 12px 8px;
-  margin-bottom: 14px;
+.form-header p {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+}
 
+.error-text {
+  color: #ef4444;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+
+/* --- THE MAGIC WRAPPER (ICONS INSIDE INPUTS) --- */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+  /* Notice the heavy right padding (40px) to make room for the icon! */
+  padding: 14px 40px 14px 16px; 
+  margin: 0;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
-  background-color: #e5e7eb;
+  background-color: #f3f4f6; /* Soft gray from the mockup */
   font-size: 14px;
   outline: none;
-
+  box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
-form input:focus {
-  border-color: #adff41;
-  box-shadow: 0 0 0 3px rgba(173, 255, 65, 0.2);
+.input-wrapper input:focus {
+  border-color: #9ac068; /* Updated focus ring to match theme */
+  box-shadow: 0 0 0 3px rgba(154, 192, 104, 0.2);
 }
 
-form button {
-  width: 103%;
-  padding: 12px;
+/* Positioning the icon inside the wrapper */
+.input-icon {
+  position: absolute;
+  right: 14px;
+  color: #9ca3af; /* Soft gray icon color */
+  pointer-events: none; /* Prevents the icon from blocking clicks */
+}
 
-  background:#9ac068;
+/* --- BUTTON & LINKS --- */
+form.login-form button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #8eb068; /* The perfect sage green we found earlier! */
+  color: white;
   border: none;
   border-radius: 10px;
-
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
-form button:hover {
-  background: #98e63a;
+form.login-form button:hover {
+  background: #7a9956;
 }
 
-form p {
-  margin-top: 12px;
+.register-link {
+  text-align: center;
+  margin-top: 8px;
   font-size: 14px;
+  color: #4b5563;
 }
 
-form a {
-  color: #4f46e5;
+.register-link a {
+  color: #4f46e5; /* The purplish link color from your original code */
   text-decoration: none;
   font-weight: 500;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
 }
 
 .counter {

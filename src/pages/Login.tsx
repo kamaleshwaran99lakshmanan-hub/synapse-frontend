@@ -3,17 +3,19 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/axios';
 import '../App.css';
-import { AlertTriangle, TrendingUp } from 'lucide-react';
+import { Mail, Lock } from 'lucide-react';
 
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  // TypeScript automatically infers the types for this state based on the initial values (strings)! ✨
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Added React.FormEvent<HTMLFormElement> to properly type the form submission 🛠️
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -22,7 +24,7 @@ export default function Login() {
       const { data } = await api.post('/auth/login', form);
       login(data.name, data.access_token);
       navigate('/dashboard');
-    } catch (err: any) {
+    } catch (err: any) { // Added 'any' to handle the Axios error response smoothly 🪲
       setError(err.response?.data?.message || 'Invalid credentials');
     } finally {
       setLoading(false);
@@ -30,57 +32,48 @@ export default function Login() {
   };
 
   return (
-     <div className="auth-container">
-        {/* LEFT SIDE CONTENT */}
-  <div className="auth-left">
-    <h1>Make smarter career decisions</h1>
-    <p>Evaluate company stability before you join</p>
+    <div className="auth-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        
+        <div className="form-header">
+          <h3>Synapse</h3>
+          <h2>Welcome to Synapse</h2>
+          <p>Login to continue</p>
+        </div>
+        
+        {error && <p className="error-text">{error}</p>}
 
-    {/* Floating Cards */}
-    <div className="score-card">
-      <span className="card-title"> <TrendingUp size={20} />
-       Stability Score
-     </span>
-      <strong>8.2 / 10</strong>
-      <div className="tag">Safe</div>
-    </div>
+        <div className="input-wrapper">
+          <input
+            type="email"
+            placeholder="Email"
+            value={form.email}
+            // TypeScript knows 'e.target.value' is a string because of the 'type="email"' attribute!
+            onChange={e => setForm({ ...form, email: e.target.value })}
+            required
+          />
+          <Mail className="input-icon" size={18} />
+        </div>
 
-    <div className="risk-card">
-     <span className="card-title">
-  <AlertTriangle size={18} />
-  Layoff Risk
-</span>
-      <strong>LOW</strong>
-    </div>
-  </div>
+        <div className="input-wrapper">
+          <input
+            type="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={e => setForm({ ...form, password: e.target.value })}
+            required
+          />
+          <Lock className="input-icon" size={18} />
+        </div>
 
-    <form onSubmit={handleSubmit}>
-      <h2>Synapse</h2>
-      <h2 style={{marginBottom:"0px"}}>Welcome to Synapse</h2>
-      <p style={{marginTop:"0px"}}>Login to continue</p>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        <button type="submit" disabled={loading}>
+          {loading ? 'Signing in...' : 'Login'}
+        </button>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={e => setForm({ ...form, email: e.target.value })}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={e => setForm({ ...form, password: e.target.value })}
-        required
-      />
-
-      <button type="submit" disabled={loading}>
-        {loading ? 'Signing in...' : 'Login'}
-      </button>
-
-      <p>No account? <Link to="/register">Register</Link></p>
-    </form>
+        <p className="register-link">
+          No account? <Link to="/register">Register</Link>
+        </p>
+      </form>
     </div>
   );
 }

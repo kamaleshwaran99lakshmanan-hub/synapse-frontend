@@ -1,0 +1,108 @@
+/* Container */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background: #f8faf9;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.logo-icon {
+  font-size: 20px;
+}
+
+/* Nav */
+.nav-wrapper {
+  display: flex;
+  gap: 10px;
+  background: #eef2ef;
+  padding: 6px;
+  border-radius: 999px;
+}
+
+/* Pills */
+.nav-pill {
+  border: none;
+  background: transparent;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-pill:hover {
+  background: #e2e8e5;
+}
+
+/* Active */
+.nav-pill.active {
+  background: white;
+  color: #111;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Right section */
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Icons */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eef2ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: #e2e8e5;
+}
+
+/* Avatar */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* Logout */
+.logout-btn {
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  color: #000;
+}

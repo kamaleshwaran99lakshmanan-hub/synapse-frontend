@@ -1,3 +1,4 @@
+import Header from '../components/Header';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,10 +12,14 @@ export default function Dashboard() {
   };
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <p>Welcome, {name}</p>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <>
+   <Header 
+        name={name || ""}   // 👈 important fix
+        onLogout={handleLogout} 
+      />
+  <section>
+
+  </section>
+</>
   );
 }
