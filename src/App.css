@@ -144,7 +144,7 @@ form.login-form {
   margin: 0;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
-  background-color: #f3f4f6; /* Soft gray from the mockup */
+  background-color: #bcbfc5; /* Soft gray from the mockup */
   font-size: 14px;
   outline: none;
   box-sizing: border-box;
@@ -200,187 +200,178 @@ form.login-form button:hover {
   text-decoration: underline;
 }
 
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* --- Global Dashboard Variables & Container --- */
+.dashboard-container {
+  /* This creates the soft greenish-gray background for the whole page */
+ 
+  min-height: 100vh;
+  padding: 2rem 4rem;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #1a1a1a;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+/* --- 1. Hero Section (Title & Search) --- */
+.hero-section {
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  color: #7a9956;
 }
 
-#next-steps {
+.hero-text h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #222;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #7a9956;
+  margin: 0;
+}
+
+.hero-search input {
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 1px solid #e0e0e0;
+  width: 300px;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  outline: none;
+  background-color: white;
+}
+
+/* --- Universal Card Styling --- */
+.card {
+  background-color: #ffffff;
+  border-radius: 20px; /* Big smooth corners! */
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04); /* The magic soft shadow */
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px); /* Tiny lift effect when hovering */
+}
+
+/* --- 2. Top Companies Split View --- */
+/* Update this existing class */
+.companies-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 3rem; /* 👈 Increased from 2rem to give the line room */
+  margin-bottom: 3rem;
+  position: relative; 
+  padding: 35px;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.companies-split-grid::after {
+  content: "";
+  position: absolute;
+  top: 20px;       /* Pushes the top of the line down slightly */
+  bottom: 20px;    /* Pulls the bottom of the line up slightly */
+  left: 50%;       /* Moves the line to the exact middle */
+  width: 1px;      /* The thickness of the line */
+  background-color: rgba(0, 0, 0, 0.08); /* 👈 A very subtle, transparent black */
+  transform: translateX(-50%); /* Perfect pixel centering */
+}
+
+.category-column h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
+  align-items: center;
+  gap: 0.5rem;
+  color: #7a9956;
+}
 
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
+.feature-card {
+  min-height: 200px; /* Makes the top cards larger */
+  margin-bottom: 1rem;
+}
+
+.safe-feature {
+  /* The Inner Gradient: Pure white fading into a very soft green in the bottom right */
+  background: linear-gradient(to top left, #ffffff 10%, rgba(116, 147, 117, 0.15) 100%);
+  
+  /* The Outer Glow */
+  box-shadow: 
+    0 8px 14px rgba(0, 0, 0, 0.04), 
+    0 8px 12px rgba(127, 181, 129, 0.3); 
+}
+.volatile-feature {
+  /* The Inner Gradient: Pure white fading into a very soft orange in the bottom right */
+  background: linear-gradient(to top left, #ffffff 10%, rgba(239, 169, 65, 0.15) 100%);
+  
+  /* The Outer Glow */
+  box-shadow: 
+    0 8px 14px rgba(0, 0, 0, 0.04), 
+    0 8px 12px rgba(239, 169, 65, 0.3); 
+}
+/* The 2x2 Grid for the smaller cards below the big ones */
+.small-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split into 2 columns */
+  gap: 1rem;
+}
+
+.small-card {
+  min-height: 120px;
+}
+
+/* --- 3. Bottom Row (Comparisons) --- */
+.comparisons-section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.comparisons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Split into 3 equal columns */
+  gap: 1.5rem;
+}
+
+.comparison-card {
+  min-height: 150px;
+}
+
+/* Special styling for the 'Add Comparison' dashed card */
+.add-comparison-card {
+  background-color: transparent;
+  border: 2px dashed #b0b8b0; /* Dashed gray/green border */
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-comparison-card:hover {
+  background-color: #f0f4f0;
+}
+
+.add-comparison-card button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+}
+
+/* --- Responsive Design (For Mobile Screens) --- */
+@media (max-width: 1024px) {
+  .companies-split-grid,
+  .comparisons-grid {
+    grid-template-columns: 1fr; /* Stack everything in 1 column on smaller screens */
   }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
+  
+  .hero-section {
     flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+    gap: 1rem;
   }
 }
