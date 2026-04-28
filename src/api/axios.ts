@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://synapse-backend-x0cv.onrender.com/api',
 });
 
 // Attach JWT token to every request automatically
