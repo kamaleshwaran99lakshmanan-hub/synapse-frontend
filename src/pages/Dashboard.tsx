@@ -18,7 +18,7 @@ export default function Dashboard() {
 
   return (
     <>
-  <div style={{ background: 'radial-gradient(circle at center, #ffffff 0%, #dfeddf 100%)', minHeight: '100vh' }}>
+  <div style={{ background: 'radial-gradient(circle at center, #ffffff 0%, #ffffff 100%)', minHeight: '100vh' }}>
       <Header 
         name={name || ""} 
         onLogout={handleLogout} 
