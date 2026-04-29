@@ -146,7 +146,8 @@ form.login-form {
   margin: 0;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
-  background-color: #bcbfc5; 
+  background-color: #eff0f2; 
+  color:black;
   font-size: 14px;
   outline: none;
   box-sizing: border-box;
