@@ -294,7 +294,7 @@ form.login-form button:hover {
 }
 
 .safe-feature {
-  background: linear-gradient(to top left, #ffffff 10%, rgba(116, 147, 117, 0.15) 100%);
+  background: linear-gradient(to top left, #ffffff 10%, #D2DCC7 100%);
   
   box-shadow: 
     0 8px 14px rgba(0, 0, 0, 0.04), 
