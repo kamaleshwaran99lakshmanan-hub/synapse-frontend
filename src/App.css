@@ -294,14 +294,14 @@ form.login-form button:hover {
 }
 
 .safe-feature {
-  background: linear-gradient(to top left, #ffffff 10%, #D2DCC7 100%);
+  background: linear-gradient( #D2DCC7 100%);
   
   box-shadow: 
     0 8px 14px rgba(0, 0, 0, 0.04), 
     0 8px 12px rgba(127, 181, 129, 0.3); 
 }
 .volatile-feature {
-  background: linear-gradient(to top left, #ffffff 10%, rgba(239, 169, 65, 0.15) 100%);
+  background: linear-gradient( rgba(239, 169, 65, 0.15) 100%);
   
   box-shadow: 
     0 8px 14px rgba(0, 0, 0, 0.04), 
