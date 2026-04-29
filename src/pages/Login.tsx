@@ -1,3 +1,8 @@
+/*author:kamaleshwaran
+  date:2024-06-15
+  description:Login page for Synapse application. Handles user authentication and redirects to dashboard on success.
+*/
+
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -9,12 +14,10 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  // TypeScript automatically infers the types for this state based on the initial values (strings)! ✨
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Added React.FormEvent<HTMLFormElement> to properly type the form submission 🛠️
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
@@ -24,7 +27,7 @@ export default function Login() {
       const { data } = await api.post('/auth/login', form);
       login(data.name, data.access_token);
       navigate('/dashboard');
-    } catch (err: any) { // Added 'any' to handle the Axios error response smoothly 🪲
+    } catch (err: any) {
       setError(err.response?.data?.message || 'Invalid credentials');
     } finally {
       setLoading(false);
@@ -48,7 +51,6 @@ export default function Login() {
             type="email"
             placeholder="Email"
             value={form.email}
-            // TypeScript knows 'e.target.value' is a string because of the 'type="email"' attribute!
             onChange={e => setForm({ ...form, email: e.target.value })}
             required
           />

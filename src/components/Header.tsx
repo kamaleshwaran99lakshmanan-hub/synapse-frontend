@@ -14,13 +14,11 @@ export default function Header({ name, onLogout }: HeaderProps) {
   return (
     <header className="header-container">
 
-      {/* Left - Logo */}
       <div className="logo">
         <span className="logo-icon"></span>
         <span className="logo-text">Synapse</span>
       </div>
 
-      {/* Center - Navigation */}
       <div className="nav-wrapper">
         {navItems.map((item) => (
           <button
@@ -35,7 +33,6 @@ export default function Header({ name, onLogout }: HeaderProps) {
         ))}
       </div>
 
-      {/* Right - Profile */}
       <div className="profile-section">
         <div className="icon-btn"><FiBell /></div>
         <div className="icon-btn"><FiSettings /></div>

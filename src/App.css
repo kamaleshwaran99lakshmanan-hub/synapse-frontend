@@ -3,8 +3,9 @@ body {
   background-image: url('../public/bg-synapse.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; /* This makes it fill the screen smoothly */
+  background-size: cover; 
 }
+
 .auth-container {
   min-height: 100vh;
   color: black;
@@ -83,21 +84,21 @@ body {
   left: 60px;
 }
 
-/* --- FORM CONTAINER --- */
+
 form.login-form {
   background: #ffffff;
   padding: 40px;
   border-radius: 16px;
   width: 100%;
-  max-width: 400px; /* Gives it a nice standard width */
+  max-width: 400px; 
   display: flex;
   flex-direction: column;
   gap: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  box-sizing: border-box; /* Ensures padding doesn't break widths */
+  box-sizing: border-box; 
 }
 
-/* --- TEXT STYLING --- */
+
 .form-header {
   text-align: center;
   margin-bottom: 10px;
@@ -131,7 +132,7 @@ form.login-form {
   margin: 0;
 }
 
-/* --- THE MAGIC WRAPPER (ICONS INSIDE INPUTS) --- */
+
 .input-wrapper {
   position: relative;
   width: 100%;
@@ -141,12 +142,11 @@ form.login-form {
 
 .input-wrapper input {
   width: 100%;
-  /* Notice the heavy right padding (40px) to make room for the icon! */
   padding: 14px 40px 14px 16px; 
   margin: 0;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
-  background-color: #bcbfc5; /* Soft gray from the mockup */
+  background-color: #bcbfc5; 
   font-size: 14px;
   outline: none;
   box-sizing: border-box;
@@ -154,24 +154,24 @@ form.login-form {
 }
 
 .input-wrapper input:focus {
-  border-color: #9ac068; /* Updated focus ring to match theme */
+  border-color: #9ac068; 
   box-shadow: 0 0 0 3px rgba(154, 192, 104, 0.2);
 }
 
-/* Positioning the icon inside the wrapper */
+
 .input-icon {
   position: absolute;
   right: 14px;
-  color: #9ca3af; /* Soft gray icon color */
-  pointer-events: none; /* Prevents the icon from blocking clicks */
+  color: #9ca3af; 
+  pointer-events: none; 
 }
 
-/* --- BUTTON & LINKS --- */
+
 form.login-form button {
   width: 100%;
   padding: 14px;
   margin-top: 10px;
-  background: #8eb068; /* The perfect sage green we found earlier! */
+  background: #8eb068; 
   color: white;
   border: none;
   border-radius: 10px;
@@ -193,7 +193,7 @@ form.login-form button:hover {
 }
 
 .register-link a {
-  color: #4f46e5; /* The purplish link color from your original code */
+  color: #4f46e5; 
   text-decoration: none;
   font-weight: 500;
 }
@@ -202,17 +202,15 @@ form.login-form button:hover {
   text-decoration: underline;
 }
 
-/* --- Global Dashboard Variables & Container --- */
+
 .dashboard-container {
-  /* This creates the soft greenish-gray background for the whole page */
- 
   min-height: 100vh;
   padding: 2rem 4rem;
   font-family: 'Inter', -apple-system, sans-serif;
   color: #1a1a1a;
 }
 
-/* --- 1. Hero Section (Title & Search) --- */
+
 .hero-section {
   display: flex;
   justify-content: space-between;
@@ -245,25 +243,24 @@ form.login-form button:hover {
   background-color: white;
 }
 
-/* --- Universal Card Styling --- */
+
 .card {
   background-color: #ffffff;
-  border-radius: 20px; /* Big smooth corners! */
+  border-radius: 20px; 
   padding: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04); /* The magic soft shadow */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
   transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
-  transform: translateY(-2px); /* Tiny lift effect when hovering */
+  transform: translateY(-2px);
 }
 
-/* --- 2. Top Companies Split View --- */
-/* Update this existing class */
+
 .companies-split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr; 
-  gap: 3rem; /* 👈 Increased from 2rem to give the line room */
+  gap: 3rem; 
   margin-bottom: 3rem;
   position: relative; 
   padding: 35px;
@@ -274,12 +271,12 @@ form.login-form button:hover {
 .companies-split-grid::after {
   content: "";
   position: absolute;
-  top: 20px;       /* Pushes the top of the line down slightly */
-  bottom: 20px;    /* Pulls the bottom of the line up slightly */
-  left: 50%;       /* Moves the line to the exact middle */
-  width: 1px;      /* The thickness of the line */
-  background-color: rgba(0, 0, 0, 0.08); /* 👈 A very subtle, transparent black */
-  transform: translateX(-50%); /* Perfect pixel centering */
+  top: 20px;
+  bottom: 20px;
+  left: 50%;
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.08);
+  transform: translateX(-50%);
 }
 
 .category-column h2 {
@@ -292,32 +289,27 @@ form.login-form button:hover {
 }
 
 .feature-card {
-  min-height: 200px; /* Makes the top cards larger */
+  min-height: 200px;
   margin-bottom: 1rem;
 }
 
 .safe-feature {
-  /* The Inner Gradient: Pure white fading into a very soft green in the bottom right */
   background: linear-gradient(to top left, #ffffff 10%, rgba(116, 147, 117, 0.15) 100%);
   
-  /* The Outer Glow */
   box-shadow: 
     0 8px 14px rgba(0, 0, 0, 0.04), 
     0 8px 12px rgba(127, 181, 129, 0.3); 
 }
 .volatile-feature {
-  /* The Inner Gradient: Pure white fading into a very soft orange in the bottom right */
   background: linear-gradient(to top left, #ffffff 10%, rgba(239, 169, 65, 0.15) 100%);
   
-  /* The Outer Glow */
   box-shadow: 
     0 8px 14px rgba(0, 0, 0, 0.04), 
     0 8px 12px rgba(239, 169, 65, 0.3); 
 }
-/* The 2x2 Grid for the smaller cards below the big ones */
 .small-cards-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Split into 2 columns */
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
@@ -325,7 +317,6 @@ form.login-form button:hover {
   min-height: 120px;
 }
 
-/* --- 3. Bottom Row (Comparisons) --- */
 .comparisons-section h2 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
@@ -333,7 +324,7 @@ form.login-form button:hover {
 
 .comparisons-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* Split into 3 equal columns */
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5rem;
 }
 
@@ -341,10 +332,9 @@ form.login-form button:hover {
   min-height: 150px;
 }
 
-/* Special styling for the 'Add Comparison' dashed card */
 .add-comparison-card {
   background-color: transparent;
-  border: 2px dashed #b0b8b0; /* Dashed gray/green border */
+  border: 2px dashed #b0b8b0;
   box-shadow: none;
   display: flex;
   justify-content: center;
@@ -365,11 +355,10 @@ form.login-form button:hover {
   cursor: pointer;
 }
 
-/* --- Responsive Design (For Mobile Screens) --- */
 @media (max-width: 1024px) {
   .companies-split-grid,
   .comparisons-grid {
-    grid-template-columns: 1fr; /* Stack everything in 1 column on smaller screens */
+    grid-template-columns: 1fr;
   }
   
   .hero-section {

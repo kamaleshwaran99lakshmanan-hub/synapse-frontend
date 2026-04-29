@@ -1,9 +1,14 @@
+/*author:kamaleshwaran
+  date:2024-06-15
+  description:register page for Synapse application. Handles user authentication and redirects to dashboard on success.
+*/
+
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/axios';
 import '../App.css';
-import { User, Mail, Lock } from 'lucide-react'; // Added User icon for the name field! 👤✉️🔒
+import { User, Mail, Lock } from 'lucide-react'; 
 
 export default function Register() {
   const { login } = useAuth();
@@ -13,7 +18,6 @@ export default function Register() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Added the React.FormEvent<HTMLFormElement> type for strict TypeScript safety 🛡️
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
@@ -32,7 +36,6 @@ export default function Register() {
 
   return (
     <div className="auth-container">
-      {/* We reuse the "login-form" class because the styling is perfectly identical! */}
       <form onSubmit={handleSubmit} className="login-form">
         
         <div className="form-header">
@@ -43,7 +46,7 @@ export default function Register() {
         
         {error && <p className="error-text">{error}</p>}
 
-        {/* 👤 Name Input Wrapper */}
+  
         <div className="input-wrapper">
           <input
             type="text"
@@ -55,7 +58,7 @@ export default function Register() {
           <User className="input-icon" size={18} />
         </div>
 
-        {/* ✉️ Email Input Wrapper */}
+        
         <div className="input-wrapper">
           <input
             type="email"
@@ -67,7 +70,7 @@ export default function Register() {
           <Mail className="input-icon" size={18} />
         </div>
 
-        {/* 🔒 Password Input Wrapper */}
+       
         <div className="input-wrapper">
           <input
             type="password"

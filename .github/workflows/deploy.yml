@@ -1,6 +1,9 @@
+author: Kamaleshwaran
+description: This GitHub Actions workflow automates the deployment of a React application to GitHub Pages whenever changes are pushed to the main branch. It checks out the code, sets up Node.js, installs dependencies, builds the project, and then deploys the built files to the gh-pages branch using the peaceiris/actions-gh-pages action.*/
+
+
 name: Deploy React App to GitHub Pages
 
-# This tells the robot: "Only run this when Kamaleshwaran pushes to the main branch!"
 on:
   push:
     branches:
