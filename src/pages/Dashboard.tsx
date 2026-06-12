@@ -35,8 +35,8 @@ export default function Dashboard() {
     try {
       // Calls your NestJS Gateway
       const response = await fetch(
-  `http://localhost:3000/api/prediction/${encodeURIComponent(company)}`
-)
+  `${import.meta.env.VITE_API_URL}/api/prediction/${encodeURIComponent(company)}`
+);
       
       if (!response.ok) {
         throw new Error('Failed to fetch data. Please check the company and try again.');
