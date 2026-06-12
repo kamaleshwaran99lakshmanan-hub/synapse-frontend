@@ -51,6 +51,19 @@ export default function Dashboard() {
     }
   };
  
+ const riskColor =
+  result?.risk_assessment === "High Risk"
+    ? "#d32f2f"
+    : result?.risk_assessment === "Medium Risk"
+    ? "#f9a825"
+    : "#2e7d32";
+
+const riskBg =
+  result?.risk_assessment === "High Risk"
+    ? "#ffebee"
+    : result?.risk_assessment === "Medium Risk"
+    ? "#fff8e1"
+    : "#e8f5e9";
 
   return (
     <>
@@ -113,16 +126,29 @@ export default function Dashboard() {
                   <p style={{ margin: '0px 0 0', color: '#666' }}>FY: {result.fiscal_year_analyzed}</p>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <h1 style={{ margin: 0, fontSize: '32px', color: result.risk_assessment === 'High Risk' ? '#d32f2f' : '#2e7d32' }}>
-                    {(result.layoff_probability * 100).toFixed(1)}%
-                  </h1>
-                  <span style={{ 
-                    display: 'inline-block', padding: '4px 12px', borderRadius: '16px', fontSize: '14px', fontWeight: 'bold',
-                    backgroundColor: result.risk_assessment === 'High Risk' ? '#ffebee' : '#e8f5e9', 
-                    color: result.risk_assessment === 'High Risk' ? '#c62828' : '#2e7d32' 
-                  }}>
-                    {result.risk_assessment}
-                  </span>
+                 <h1
+  style={{
+    margin: 0,
+    fontSize: "32px",
+    color: riskColor,
+  }}
+>
+  {(result.layoff_probability * 100).toFixed(1)}%
+</h1>
+
+<span
+  style={{
+    display: "inline-block",
+    padding: "4px 12px",
+    borderRadius: "16px",
+    fontSize: "14px",
+    fontWeight: "bold",
+    backgroundColor: riskBg,
+    color: riskColor,
+  }}
+>
+  {result.risk_assessment}
+</span>
                 </div>
               </div>
 
