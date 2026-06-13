@@ -39,37 +39,34 @@ const handleSearch = async (
     setResult(null);
   }
 
-  try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/prediction/${encodeURIComponent(
-        company
-      )}`
-    );
+try {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/prediction/${encodeURIComponent(
+      company
+    )}`
+  );
 
-    const data = await response.json();
+  const data = await response.json();
 
-    // ML is waking up
-    if (data.warmingUp) {
-      setError(
-        "🤖 AI Engine is starting... This usually takes about a minute."
-      );
+  // Backend returned 503
+  if (!response.ok) {
+    setError("🤖 AI Engine is starting... Retrying in 10 seconds.");
 
-      // Retry automatically after 10 seconds
-      setTimeout(() => {
-        handleSearch(undefined, retryCount + 1);
-      }, 10000);
+    setTimeout(() => {
+      handleSearch(undefined, retryCount + 1);
+    }, 10000);
 
-      return;
-    }
-
-    // Prediction ready
-    setError("");
-    setResult(data);
-    setLoading(false);
-  } catch (err: any) {
-    setLoading(false);
-    setError(err.message || "Something went wrong.");
+    return;
   }
+
+  // Success
+  setResult(data);
+  setError("");
+  setLoading(false);
+} catch (err: any) {
+  setLoading(false);
+  setError(err.message || "Something went wrong.");
+}
 };
  
  const riskColor =
