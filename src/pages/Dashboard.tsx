@@ -24,32 +24,53 @@ export default function Dashboard() {
   };
 
   // --- API Fetch Function ---
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!company.trim()) return;
+const handleSearch = async (
+  e?: React.FormEvent,
+  retryCount = 0
+) => {
+  if (e) e.preventDefault();
 
+  if (!company.trim()) return;
+
+  // Only show loading on first request
+  if (retryCount === 0) {
     setLoading(true);
-    setError('');
+    setError("");
     setResult(null);
+  }
 
-    try {
-      // Calls your NestJS Gateway
-      const response = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/prediction/${encodeURIComponent(company)}`
-);
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch data. Please check the company and try again.');
-      }
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/prediction/${encodeURIComponent(
+        company
+      )}`
+    );
 
-      const data = await response.json();
-      setResult(data);
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    const data = await response.json();
+
+    // ML is waking up
+    if (data.warmingUp) {
+      setError(
+        "🤖 AI Engine is starting... This usually takes about a minute."
+      );
+
+      // Retry automatically after 10 seconds
+      setTimeout(() => {
+        handleSearch(undefined, retryCount + 1);
+      }, 10000);
+
+      return;
     }
-  };
+
+    // Prediction ready
+    setError("");
+    setResult(data);
+    setLoading(false);
+  } catch (err: any) {
+    setLoading(false);
+    setError(err.message || "Something went wrong.");
+  }
+};
  
  const riskColor =
   result?.risk_assessment === "High Risk"
@@ -104,7 +125,7 @@ const riskBg =
                     fontWeight: 'bold'
                   }}
                 >
-                  {loading ? 'Analyzing...' : 'Analyze Risk'}
+                  {loading ? "Starting AI Engine..." : "Analyze Risk"}
                 </button>
               </form>
             </div>
